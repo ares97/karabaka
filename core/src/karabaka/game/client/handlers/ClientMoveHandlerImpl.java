@@ -5,14 +5,8 @@ import karabaka.game.client.utils.Direction;
 
 public class ClientMoveHandlerImpl implements MoveHandler {
 
-    private final Tank tank;
-
-    public ClientMoveHandlerImpl(Tank tank) {
-        this.tank = tank;
-    }
-
     @Override
-    public void move(Direction direction) {
+    public void move(Direction direction, Tank tank) {
         switch (direction) {
             case UP:
                 break;
