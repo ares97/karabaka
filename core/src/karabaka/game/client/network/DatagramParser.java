@@ -6,8 +6,10 @@ import karabaka.game.client.utils.Direction;
 
 public class DatagramParser {
 
+    public final static DatagramParser instance = new DatagramParser();
+
     // movement parser: action-tankUUID-direction-
-    private static String parseAction(Direction direction, Tank tank, Action action) {
+    public String parseAction(Direction direction, Tank tank, Action action) {
         String result = "";
 
         result += action;
@@ -17,6 +19,9 @@ public class DatagramParser {
         result += direction;
 
         return result;
+    }
+
+    private DatagramParser() {
     }
 
 }
