@@ -12,4 +12,8 @@ public class Bullet extends Rectangle {
         this.y = y;
         texture = new Texture("core/assets/bullet.png");
     }
+
+    public Texture getTexture() {
+        return texture;
+    }
 }

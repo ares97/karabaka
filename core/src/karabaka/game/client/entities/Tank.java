@@ -20,4 +20,15 @@ public class Tank extends Rectangle {
         texture = new Texture("core/assets/Tank_up.png");
     }
 
+    public Texture getTexture() {
+        return texture;
+    }
+
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
 }
