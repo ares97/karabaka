@@ -10,8 +10,8 @@ public class ClientMoveHandlerImpl implements MoveHandler {
 
     @Override
     public void move(Direction direction, Tank tank) {
-        String datagram = DatagramParser.instance.parseAction(direction, tank, Action.MOVE);
-        DatagramHandler.instance.sendDatagram(datagram);
+        String encodedAction = DatagramParser.instance.parseAction(direction, tank, Action.MOVE);
+        DatagramHandler.instance.sendDatagram(encodedAction);
     }
 
 }
