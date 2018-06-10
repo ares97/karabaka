@@ -41,9 +41,7 @@ public class Player {
     }
 
     private void move(Direction direction) {
-        if (tank != null) {
-            moveHandler.move(direction, tank);
-        }
+        moveHandler.move(direction, tank);
     }
 
     public void setTank(Tank tank) {

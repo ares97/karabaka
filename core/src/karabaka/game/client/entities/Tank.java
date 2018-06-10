@@ -37,6 +37,10 @@ public class Tank extends Rectangle {
         this.id = id;
     }
 
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

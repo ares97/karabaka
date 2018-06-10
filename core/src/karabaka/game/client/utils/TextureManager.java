@@ -32,7 +32,7 @@ public class TextureManager {
             case RIGHT:
                 return TextureManager.instance.tankRight;
             default:
-                return TextureManager.instance.tankUp;
+                return TextureManager.instance.tankLeft;
         }
     }
 }

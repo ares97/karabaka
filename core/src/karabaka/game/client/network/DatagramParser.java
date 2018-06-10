@@ -19,6 +19,8 @@ public class DatagramParser {
 
     public final static DatagramParser instance = new DatagramParser();
 
+    public final static String POSITION_SEPARATOR = "#";
+
     // movement parser: action-tankUUID-direction-
     public String parseAction(Direction direction, Tank tank, Action action) {
         String result = "";
@@ -56,13 +58,12 @@ public class DatagramParser {
         String[] entities = datagram.split(":");
 
         if (entities.length >= 1) {
-            String[] tankPackage = entities[0].split("-");
+            String[] tankPackage = entities[0].split(POSITION_SEPARATOR);
             decodeTankPackage(tankPackage);
         }
         if (entities.length >= 2) {
-            String[] bulletPackage = entities[1].split("-");
+            String[] bulletPackage = entities[1].split(POSITION_SEPARATOR);
             decodeBulletPackage(bulletPackage);
-            System.out.println("bullet!");
         }
     }
 
@@ -70,13 +71,13 @@ public class DatagramParser {
         //string = player[i].x + "\" + player[i].y + "\" + ... + ":" bullet[i].x + "\" + bullet[i].y + "\"
         String datagram = "";
         for (Tank player : EntityContainer.instance.getTanks()) {
-            datagram += String.valueOf(player.x) + "-" + String.valueOf(player.y) + "-" +
-                    String.valueOf(player.getDirection()) + "-" + player.getId() + "-";
+            datagram += String.valueOf(player.x) + POSITION_SEPARATOR + String.valueOf(player.y) + POSITION_SEPARATOR +
+                    String.valueOf(player.getDirection()) + POSITION_SEPARATOR + player.getId() + POSITION_SEPARATOR;
         }
         datagram += ":";
         for (Bullet bullet : EntityContainer.instance.getBullets()) {
-            datagram += String.valueOf(bullet.x) + "-" + String.valueOf(bullet.y) + "-"
-                    + String.valueOf(bullet.getDirection()) + "-";
+            datagram += String.valueOf(bullet.x) + POSITION_SEPARATOR + String.valueOf(bullet.y) + POSITION_SEPARATOR
+                    + String.valueOf(bullet.getDirection()) + POSITION_SEPARATOR;
         }
         System.out.println(datagram);
         return datagram;

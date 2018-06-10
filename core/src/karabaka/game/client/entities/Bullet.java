@@ -37,6 +37,7 @@ public class Bullet extends Rectangle {
                 y += GameSettings.BULLET_MOVE_SIZE;
                 break;
         }
+        // todo delete bullet when is off the gameboard
     }
 
     public Direction getDirection() {

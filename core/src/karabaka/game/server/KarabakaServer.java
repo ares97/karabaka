@@ -17,7 +17,11 @@ public class KarabakaServer extends BaseGameRenderer {
     public void render() {
         DatagramServerReceiver.instance.sendDataToPlayers().run();
         super.render();
-        for (Bullet bullet : EntityContainer.instance.getBullets()){
+        updateEntities();
+    }
+
+    private void updateEntities() {
+        for (Bullet bullet : EntityContainer.instance.getBullets()) {
             bullet.updatePosition();
         }
     }

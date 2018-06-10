@@ -24,6 +24,7 @@ public class ServerMoveHandlerImpl implements MoveHandler {
                     player.y = lastY;
                 }
             }
+            player.setDirection(direction);
         }
     }
 

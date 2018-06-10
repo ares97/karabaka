@@ -37,7 +37,6 @@ public class DatagramServerReceiver {
             String parsedEntities = DatagramParser.instance.parseEntities();
             for (InetAddress ip : players) {
                 sendDatagram(parsedEntities, ip);
-                System.out.println(ip);
             }
         };
     }
