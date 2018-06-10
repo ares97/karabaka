@@ -1,5 +1,7 @@
 package karabaka.game.client.entities;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import karabaka.game.client.handlers.MoveHandler;
 import karabaka.game.client.utils.Direction;
 
@@ -13,7 +15,19 @@ public class Player {
         this.moveHandler = moveHandler;
     }
 
-    public void move(Direction direction) {
+    public void handlePlayerInput() {
+        if (Gdx.input.isKeyPressed(Input.Keys.A)) {
+            move((Direction.LEFT));
+        } else if (Gdx.input.isKeyPressed(Input.Keys.W)) {
+            move(Direction.UP);
+        } else if (Gdx.input.isKeyPressed(Input.Keys.S)) {
+            move(Direction.DOWN);
+        } else if (Gdx.input.isKeyPressed(Input.Keys.D)) {
+            move(Direction.RIGHT);
+        }
+    }
+
+    private void move(Direction direction) {
         moveHandler.move(direction, tank);
     }
 

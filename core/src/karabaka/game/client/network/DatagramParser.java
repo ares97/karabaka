@@ -13,9 +13,9 @@ public class DatagramParser {
         String result = "";
 
         result += action;
-        result += "-";
+        result += "&";
         result += tank.getUuid();
-        result += "-";
+        result += "&";
         result += direction;
 
         return result;

@@ -1,6 +1,7 @@
 package karabaka.game.client;
 
 import karabaka.game.client.entities.Bullet;
+import karabaka.game.client.entities.Player;
 import karabaka.game.client.entities.Tank;
 
 import java.util.LinkedList;
@@ -12,6 +13,7 @@ public class EntityContainer {
 
     private List<Bullet> bullets;
     private List<Tank> tanks;
+    private Player player;
 
     private final Object bulletLock = new Object();
     private final Object tankLock = new Object();
@@ -59,4 +61,11 @@ public class EntityContainer {
         }
     }
 
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 }
