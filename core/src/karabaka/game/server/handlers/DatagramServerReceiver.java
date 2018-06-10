@@ -26,12 +26,7 @@ public class DatagramServerReceiver {
     private final Set<InetAddress> players = new HashSet<>();
 
     private MoveHandler moveHandler = new ServerMoveHandlerImpl();
-    private ShootHandler shootHandler = new ShootHandler() {
-        @Override
-        public void shoot(Direction direction, Tank tank) {
-
-        }
-    };
+    private ShootHandler shootHandler = new ServerShootHandlerImpl();
 
     public void startListening() {
         new Thread(datagramActionReceiver()).start();
@@ -79,7 +74,7 @@ public class DatagramServerReceiver {
             Tank newTank = new Tank(250, 250, Direction.UP, address.toString());
             EntityContainer.instance.addTank(newTank);
             players.add(address);
-            sendDatagram(NetworkSettings.JOIN_ACCEPTED+"&"+address, address);
+            sendDatagram(NetworkSettings.JOIN_ACCEPTED + "&" + address, address);
         });
     }
 

@@ -75,7 +75,8 @@ public class DatagramParser {
         }
         datagram += ":";
         for (Bullet bullet : EntityContainer.instance.getBullets()) {
-            datagram += String.valueOf(bullet.x) + "-" + String.valueOf(bullet.y) + "-";
+            datagram += String.valueOf(bullet.x) + "-" + String.valueOf(bullet.y) + "-"
+                    + String.valueOf(bullet.getDirection()) + "-";
         }
         System.out.println(datagram);
         return datagram;
@@ -85,11 +86,13 @@ public class DatagramParser {
         LinkedList<Bullet> bullets = new LinkedList<>();
 
         Gdx.app.postRunnable(() -> {
-            for (int i = 0; i < bulletPackage.length; i += 2) {
+            for (int i = 0; i < bulletPackage.length; i += 3) {
                 bullets.add(new Bullet(
-                        Float.valueOf(bulletPackage[i]),
-                        Float.valueOf(bulletPackage[i + 1])
-                ));
+                                Float.valueOf(bulletPackage[i]),
+                                Float.valueOf(bulletPackage[i + 1]),
+                                Direction.valueOf(bulletPackage[i + 2])
+                        )
+                );
             }
         });
 
@@ -106,11 +109,10 @@ public class DatagramParser {
                         Direction.valueOf(tankPackage[i + 2]),
                         tankPackage[i + 3]
                 );
-                if (tank.getId().equals(PLAYER_IP)){
+                if (tank.getId().equals(PLAYER_IP)) {
                     EntityContainer.instance.getPlayer().setTank(tank);
-                    System.out.println("JEJ");
                 }
-             //   System.out.println(tank.getId());
+                //   System.out.println(tank.getId());
                 tanks.add(tank);
             }
         });
