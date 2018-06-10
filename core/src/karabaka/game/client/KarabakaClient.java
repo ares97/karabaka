@@ -39,5 +39,13 @@ public class KarabakaClient extends ApplicationAdapter {
     @Override
     public void dispose() {
         batch.dispose();
+        disposeEntityTextures();
+    }
+
+    private void disposeEntityTextures() {
+        for (Tank tank : EntityContainer.instance.getTanks())
+            tank.getTexture().dispose();
+        for (Bullet bullet : EntityContainer.instance.getBullets())
+            bullet.getTexture().dispose();
     }
 }
