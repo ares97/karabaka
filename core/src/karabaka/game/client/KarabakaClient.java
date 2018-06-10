@@ -1,23 +1,23 @@
 package karabaka.game.client;
 
 import karabaka.game.BaseGameRenderer;
-import karabaka.game.client.entities.Player;
-import karabaka.game.client.entities.Tank;
-import karabaka.game.client.handlers.ClientMoveHandlerImpl;
-import karabaka.game.client.utils.Direction;
+import karabaka.game.client.network.DatagramClientSender;
+import karabaka.game.client.utils.NetworkSettings;
 
 public class KarabakaClient extends BaseGameRenderer {
 
     @Override
     public void create() {
         super.create();
-        EntityContainer.instance.addTank(new Tank(40, 70, Direction.LEFT));
-        EntityContainer.instance.setPlayer(new Player(new Tank(80, 160, Direction.UP), new ClientMoveHandlerImpl()));
+//        EntityContainer.instance.setPlayer(new Player(new Tank(80, 160, Direction.UP), new ClientMoveHandlerImpl()));
+        DatagramClientSender.instance.startServerListening();
+        //DatagramClientSender.instance.tryConnectToServer();
     }
 
     @Override
     public void render() {
         super.render();
-        EntityContainer.instance.getPlayer().handlePlayerInput();
+        if (!DatagramClientSender.instance.canJoin)
+            DatagramClientSender.instance.sendDatagram(NetworkSettings.TRY_JOIN_TO_SERVER);
     }
 }

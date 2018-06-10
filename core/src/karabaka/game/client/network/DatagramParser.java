@@ -19,7 +19,7 @@ public class DatagramParser {
 
         result += action;
         result += "&";
-        result += tank.getUuid();
+        result += tank.getId();
         result += "&";
         result += direction;
 
@@ -28,25 +28,30 @@ public class DatagramParser {
 
     public Runnable decodeAction(String datagram, MoveHandler moveHandler, ShootHandler shootHandler) {
         String[] message = datagram.split("&");
+        if (message.length == 3) {
+            Action action = Action.valueOf(message[0]);
+            Direction direction = Direction.valueOf(message[2]);
+            String uuid = message[1];
 
-        Action action = Action.valueOf(message[0]);
-        Direction direction = Direction.valueOf(message[2]);
-        String uuid = message[1];
-
-        Optional<Tank> tank = EntityContainer.instance.getTank(uuid);
-        if (tank.isPresent()) {
-            switch (action) {
-                case MOVE:
-                    return () -> moveHandler.move(direction, tank.get());
-                case SHOOT:
-                    return () -> shootHandler.shoot(direction, tank.get());
+            Optional<Tank> tank = EntityContainer.instance.getTank(uuid);
+            if (tank.isPresent()) {
+                switch (action) {
+                    case MOVE:
+                        return () -> moveHandler.move(direction, tank.get());
+                    case SHOOT:
+                        return () -> shootHandler.shoot(direction, tank.get());
+                }
             }
         }
-        return () -> {
-        };
+        return getEmptyRunnable();
     }
 
     private DatagramParser() {
+    }
+
+    private Runnable getEmptyRunnable() {
+        return () -> {
+        };
     }
 
 }

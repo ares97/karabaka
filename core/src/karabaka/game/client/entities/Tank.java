@@ -11,12 +11,13 @@ public class Tank extends Rectangle {
 
     private Texture texture;
     private Direction direction;
-    private String uuid = UUID.randomUUID().toString();
+    private String id;
 
-    public Tank(float x, float y, Direction direction) {
+    public Tank(float x, float y, Direction direction, String id) {
         this.x = x;
         this.y = y;
         this.direction = direction;
+        this.id = id;
         texture = TextureManager.instance.getTank(direction);
     }
 
@@ -28,7 +29,11 @@ public class Tank extends Rectangle {
         return direction;
     }
 
-    public String getUuid() {
-        return uuid;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

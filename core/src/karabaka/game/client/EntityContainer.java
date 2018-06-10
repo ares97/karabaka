@@ -4,16 +4,14 @@ import karabaka.game.client.entities.Bullet;
 import karabaka.game.client.entities.Player;
 import karabaka.game.client.entities.Tank;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class EntityContainer {
 
     public static final EntityContainer instance = new EntityContainer();
 
     private List<Bullet> bullets;
-    private List<Tank> tanks;
+    private Set<Tank> tanks;
     private Player player;
 
     private final Object bulletLock = new Object();
@@ -22,7 +20,7 @@ public class EntityContainer {
 
     private EntityContainer() {
         bullets = new LinkedList<>();
-        tanks = new LinkedList<>();
+        tanks = new HashSet<>();
     }
 
 
@@ -50,7 +48,7 @@ public class EntityContainer {
         }
     }
 
-    public List<Tank> getTanks() {
+    public Set<Tank> getTanks() {
         synchronized (tankLock) {
             return tanks;
         }
@@ -58,11 +56,11 @@ public class EntityContainer {
 
     public Optional<Tank> getTank(String uuid){
         synchronized (tankLock){
-            return tanks.parallelStream().filter(t -> t.getUuid().equals(uuid)).findAny();
+            return tanks.parallelStream().filter(t -> t.getId().equals(uuid)).findAny();
         }
     }
 
-    public void setTanks(List<Tank> tanks) {
+    public void setTanks(Set<Tank> tanks) {
         synchronized (tankLock) {
             this.tanks = tanks;
         }
