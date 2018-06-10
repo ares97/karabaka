@@ -49,7 +49,6 @@ public class DatagramServerReceiver {
                 try {
                     socket.receive(dPacket);
                     String receivedDatagram = new String(dPacket.getData(), 0, dPacket.getLength());
-                    System.out.println(receivedDatagram);
                     if (receivedDatagram.equals(NetworkSettings.TRY_JOIN_TO_SERVER)) {
                         handleJoiningToServer(dPacket.getAddress());
                     } else {

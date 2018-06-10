@@ -31,6 +31,7 @@ public class Bullet extends Rectangle {
             if (tank.overlaps(this)){
                 tank.x = -3000;
                 tank.y = -3000;
+                // todo give ability to reborn after clicking some key
             }
         }
     }

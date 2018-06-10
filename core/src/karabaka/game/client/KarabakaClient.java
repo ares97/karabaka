@@ -9,7 +9,6 @@ public class KarabakaClient extends BaseGameRenderer {
     @Override
     public void create() {
         super.create();
-//        EntityContainer.instance.setPlayer(new Player(new Tank(80, 160, Direction.UP), new ClientMoveHandlerImpl()));
         DatagramClientSender.instance.startServerListening();
     }
 

@@ -48,11 +48,9 @@ public class DatagramClientSender {
                 try {
                     socket.receive(dPacket);
                     String receivedDatagram = new String(dPacket.getData(), 0, dPacket.getLength());
-                 //   System.out.println(receivedDatagram);
                     if (receivedDatagram.split("&")[0].equals(NetworkSettings.JOIN_ACCEPTED)) {
                         canJoin = true;
                         PLAYER_IP = receivedDatagram.split("&")[1];
-                        System.out.println(PLAYER_IP);
                         EntityContainer.instance.setPlayer(new Player());
                     } else {
                         DatagramParser.instance.decodeEntities(receivedDatagram);
