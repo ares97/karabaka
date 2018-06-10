@@ -6,6 +6,7 @@ import karabaka.game.client.entities.Tank;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 public class EntityContainer {
 
@@ -52,6 +53,12 @@ public class EntityContainer {
     public List<Tank> getTanks() {
         synchronized (tankLock) {
             return tanks;
+        }
+    }
+
+    public Optional<Tank> getTank(String uuid){
+        synchronized (tankLock){
+            return tanks.parallelStream().filter(t -> t.getUuid().equals(uuid)).findAny();
         }
     }
 
