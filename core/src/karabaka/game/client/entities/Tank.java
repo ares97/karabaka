@@ -3,6 +3,7 @@ package karabaka.game.client.entities;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import karabaka.game.client.utils.Direction;
+import karabaka.game.client.utils.GameSettings;
 import karabaka.game.client.utils.TextureManager;
 
 import java.util.Objects;
@@ -18,6 +19,8 @@ public class Tank extends Rectangle {
         this.y = y;
         this.direction = direction;
         this.id = id;
+        width = GameSettings.TANK_SIZE;
+        height = GameSettings.TANK_SIZE;
         texture = TextureManager.instance.getTank(direction);
     }
 
