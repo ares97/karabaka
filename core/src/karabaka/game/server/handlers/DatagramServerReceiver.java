@@ -3,6 +3,9 @@ package karabaka.game.server.handlers;
 import com.badlogic.gdx.Gdx;
 import karabaka.game.client.EntityContainer;
 import karabaka.game.client.entities.Tank;
+import karabaka.game.client.handlers.MoveHandler;
+import karabaka.game.client.handlers.ShootHandler;
+import karabaka.game.client.network.DatagramParser;
 import karabaka.game.client.utils.Direction;
 import karabaka.game.client.utils.NetworkSettings;
 
@@ -22,6 +25,14 @@ public class DatagramServerReceiver {
 
     private final Set<InetAddress> players = new HashSet<>();
 
+    private MoveHandler moveHandler = new ServerMoveHandlerImpl();
+    private ShootHandler shootHandler = new ShootHandler() {
+        @Override
+        public void shoot(Direction direction, Tank tank) {
+
+        }
+    };
+
     public void startListening() {
         new Thread(datagramActionReceiver()).start();
     }
@@ -38,7 +49,8 @@ public class DatagramServerReceiver {
                     if (receivedDatagram.equals(NetworkSettings.TRY_JOIN_TO_SERVER)) {
                         handleJoiningToServer(dPacket.getAddress());
                     } else {
-                        //DatagramParser.instance.decodeAction().run();
+                        Gdx.app.postRunnable(DatagramParser.instance
+                                .decodeAction(receivedDatagram, moveHandler, shootHandler));
                     }
 
                 } catch (IOException e) {
