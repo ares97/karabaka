@@ -7,15 +7,14 @@ public class ClientMoveHandlerImpl implements MoveHandler {
 
     @Override
     public void move(Direction direction, Tank tank) {
-        switch (direction) {
-            case UP:
-                break;
-            case DOWN:
-                break;
-            case LEFT:
-                break;
-            case RIGHT:
-                break;
-        }
+        String datagram = generateTankMoveDatagram(direction,tank);
+    }
+
+    // movement parser: tankUUID-direction-
+    private String generateTankMoveDatagram(Direction direction, Tank tank) {
+        String result = "";
+
+
+        return result;
     }
 }
