@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import karabaka.game.client.entities.Bullet;
+import karabaka.game.client.entities.Player;
 import karabaka.game.client.entities.Tank;
 import karabaka.game.client.utils.Direction;
 
