@@ -4,11 +4,11 @@ import karabaka.game.client.utils.NetworkSettings;
 
 import java.net.*;
 
-public class DatagramHandler {
+public class DatagramClientSender {
 
     private DatagramSocket socket;
 
-    public final static DatagramHandler instance = new DatagramHandler();
+    public final static DatagramClientSender instance = new DatagramClientSender();
 
     public void sendDatagram(String datagram) {
         try {
@@ -28,7 +28,7 @@ public class DatagramHandler {
     }
 
 
-    private DatagramHandler() {
+    private DatagramClientSender() {
         try {
             socket = new DatagramSocket();
         } catch (SocketException e) {

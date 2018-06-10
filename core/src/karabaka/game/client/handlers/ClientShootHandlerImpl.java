@@ -1,7 +1,7 @@
 package karabaka.game.client.handlers;
 
 import karabaka.game.client.entities.Tank;
-import karabaka.game.client.network.DatagramHandler;
+import karabaka.game.client.network.DatagramClientSender;
 import karabaka.game.client.network.DatagramParser;
 import karabaka.game.client.utils.Action;
 import karabaka.game.client.utils.Direction;
@@ -19,7 +19,7 @@ public class ClientShootHandlerImpl implements ShootHandler {
         if (canShoot) {
             handleCooldown();
             String encodedAction = DatagramParser.instance.parseAction(direction, tank, Action.SHOOT);
-            DatagramHandler.instance.sendDatagram(encodedAction);
+            DatagramClientSender.instance.sendDatagram(encodedAction);
         }
     }
 
