@@ -8,7 +8,7 @@ public class Bullet extends Rectangle {
 
     private Texture texture;
 
-    public Bullet(int x, int y) {
+    public Bullet(float x, float y) {
         this.x = x;
         this.y = y;
         texture = TextureManager.instance.bullet;

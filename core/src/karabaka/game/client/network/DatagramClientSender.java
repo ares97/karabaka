@@ -1,9 +1,14 @@
 package karabaka.game.client.network;
 
+import karabaka.game.client.EntityContainer;
+import karabaka.game.client.entities.Player;
 import karabaka.game.client.utils.NetworkSettings;
 
 import java.io.IOException;
-import java.net.*;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketException;
 
 public class DatagramClientSender {
 
@@ -13,6 +18,8 @@ public class DatagramClientSender {
 
     public boolean canJoin = false;
 
+    public static String PLAYER_IP = "";
+
     public void startServerListening() {
         new Thread(serverListener()).start();
     }
@@ -20,7 +27,6 @@ public class DatagramClientSender {
     public void sendDatagram(String datagram) {
         try {
             InetAddress receiverIP = InetAddress.getByName(NetworkSettings.SERVER_IP);
-
             DatagramPacket datagramPacket =
                     new DatagramPacket(
                             datagram.getBytes(),
@@ -34,17 +40,23 @@ public class DatagramClientSender {
         }
     }
 
-    private Runnable serverListener() {
+    private synchronized Runnable serverListener() {
         return () -> {
-            while (!canJoin) {
+            while (true) {
                 byte[] buff = new byte[1024];
                 DatagramPacket dPacket = new DatagramPacket(buff, 1024);
                 try {
                     socket.receive(dPacket);
                     String receivedDatagram = new String(dPacket.getData(), 0, dPacket.getLength());
-                    System.out.println(receivedDatagram);
-                    if (receivedDatagram.equals(NetworkSettings.JOIN_ACCEPTED))
+                 //   System.out.println(receivedDatagram);
+                    if (receivedDatagram.split("&")[0].equals(NetworkSettings.JOIN_ACCEPTED)) {
                         canJoin = true;
+                        PLAYER_IP = receivedDatagram.split("&")[1];
+                        System.out.println(PLAYER_IP);
+                        EntityContainer.instance.setPlayer(new Player());
+                    } else {
+                        DatagramParser.instance.decodeEntities(receivedDatagram);
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -59,13 +71,5 @@ public class DatagramClientSender {
         } catch (SocketException e) {
             e.printStackTrace();
         }
-    }
-
-    public void tryConnectToServer() {
-        new Thread(() -> {
-            while (!canJoin) {
-                sendDatagram(NetworkSettings.TRY_JOIN_TO_SERVER);
-            }
-        });
     }
 }

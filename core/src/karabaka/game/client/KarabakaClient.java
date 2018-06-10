@@ -16,7 +16,11 @@ public class KarabakaClient extends BaseGameRenderer {
     @Override
     public void render() {
         super.render();
-        if (!DatagramClientSender.instance.canJoin)
+        if (!DatagramClientSender.instance.canJoin) {
             DatagramClientSender.instance.sendDatagram(NetworkSettings.TRY_JOIN_TO_SERVER);
+        } else {
+            if (EntityContainer.instance.getPlayer() != null)
+                EntityContainer.instance.getPlayer().handlePlayerInput();
+        }
     }
 }

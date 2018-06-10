@@ -2,17 +2,22 @@ package karabaka.game.client.entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import karabaka.game.client.handlers.ClientMoveHandlerImpl;
 import karabaka.game.client.handlers.MoveHandler;
 import karabaka.game.client.utils.Direction;
 
 public class Player {
 
-    private final Tank tank;
-    private final MoveHandler moveHandler;
+    private Tank tank;
+    private MoveHandler moveHandler;
 
     public Player(Tank tank, MoveHandler moveHandler) {
         this.tank = tank;
         this.moveHandler = moveHandler;
+    }
+
+    public Player() {
+        moveHandler = new ClientMoveHandlerImpl();
     }
 
     public void handlePlayerInput() {
@@ -28,7 +33,16 @@ public class Player {
     }
 
     private void move(Direction direction) {
-        moveHandler.move(direction, tank);
+        if (tank != null) {
+            moveHandler.move(direction, tank);
+        }
     }
 
+    public void setTank(Tank tank) {
+        this.tank = tank;
+    }
+
+    public Tank getTank() {
+        return tank;
+    }
 }

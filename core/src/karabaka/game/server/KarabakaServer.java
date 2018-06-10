@@ -13,6 +13,7 @@ public class KarabakaServer extends BaseGameRenderer {
 
     @Override
     public void render() {
+        DatagramServerReceiver.instance.sendDataToPlayers().run();
         super.render();
     }
 }
