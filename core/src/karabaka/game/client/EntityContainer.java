@@ -5,45 +5,39 @@ import karabaka.game.client.entities.Player;
 import karabaka.game.client.entities.Tank;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class EntityContainer {
 
     public static final EntityContainer instance = new EntityContainer();
 
-    private List<Bullet> bullets;
+    private ConcurrentLinkedQueue<Bullet> bullets;
     private Set<Tank> tanks;
     private Player player;
 
-    private final Object bulletLock = new Object();
     private final Object tankLock = new Object();
 
 
     private EntityContainer() {
-        bullets = new LinkedList<>();
+        bullets = new ConcurrentLinkedQueue<Bullet>();
         tanks = new HashSet<>();
     }
 
 
     public void addBullet(Bullet bullet) {
-        synchronized (bulletLock) {
-            bullets.add(bullet);
-        }
+        bullets.add(bullet);
     }
 
-    public List<Bullet> getBullets() {
-        synchronized (bulletLock) {
-            return bullets;
-        }
+    public ConcurrentLinkedQueue<Bullet> getBullets() {
+        return bullets;
     }
 
-    public void setBullets(List<Bullet> bullets) {
-        synchronized (bulletLock) {
-            this.bullets = bullets;
-        }
+    public void setBullets(ConcurrentLinkedQueue<Bullet> bullets) {
+        this.bullets = bullets;
     }
 
-    public void addTank(Tank tank){
-        synchronized (tankLock){
+    public void addTank(Tank tank) {
+        synchronized (tankLock) {
             tanks.add(tank);
         }
     }
@@ -54,8 +48,8 @@ public class EntityContainer {
         }
     }
 
-    public Optional<Tank> getTank(String uuid){
-        synchronized (tankLock){
+    public Optional<Tank> getTank(String uuid) {
+        synchronized (tankLock) {
             return tanks.parallelStream().filter(t -> t.getId().equals(uuid)).findAny();
         }
     }

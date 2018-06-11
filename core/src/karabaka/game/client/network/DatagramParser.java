@@ -12,6 +12,7 @@ import karabaka.game.client.utils.Direction;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import static karabaka.game.client.network.DatagramClientSender.PLAYER_IP;
 
@@ -84,7 +85,7 @@ public class DatagramParser {
     }
 
     private synchronized static void decodeBulletPackage(String[] bulletPackage) {
-        LinkedList<Bullet> bullets = new LinkedList<>();
+        ConcurrentLinkedQueue<Bullet> bullets = new ConcurrentLinkedQueue<>();
 
         Gdx.app.postRunnable(() -> {
             for (int i = 0; i < bulletPackage.length; i += 3) {

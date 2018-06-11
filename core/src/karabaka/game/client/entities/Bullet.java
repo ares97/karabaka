@@ -25,10 +25,10 @@ public class Bullet extends Rectangle {
         return texture;
     }
 
-    public void update(){
+    public void update() {
         updatePosition();
-        for (Tank tank: EntityContainer.instance.getTanks()){
-            if (tank.overlaps(this)){
+        for (Tank tank : EntityContainer.instance.getTanks()) {
+            if (tank.overlaps(this)) {
                 tank.x = -3000;
                 tank.y = -3000;
                 // todo give ability to reborn after clicking some key
@@ -51,7 +51,8 @@ public class Bullet extends Rectangle {
                 y += GameSettings.BULLET_MOVE_SIZE;
                 break;
         }
-        // todo delete bullet when is off the gameboard
+        if (x < -100 || x > GameSettings.GAME_WIDHT + 100 || y < -100 || y > GameSettings.GAME_HEIGHT + 100)
+            EntityContainer.instance.getBullets().remove(this);
     }
 
     public Direction getDirection() {
