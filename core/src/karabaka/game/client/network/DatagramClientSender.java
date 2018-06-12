@@ -43,8 +43,8 @@ public class DatagramClientSender {
     private synchronized Runnable serverListener() {
         return () -> {
             while (true) {
-                byte[] buff = new byte[1024];
-                DatagramPacket dPacket = new DatagramPacket(buff, 1024);
+                byte[] buff = new byte[4096];
+                DatagramPacket dPacket = new DatagramPacket(buff, 4096);
                 try {
                     socket.receive(dPacket);
                     String receivedDatagram = new String(dPacket.getData(), 0, dPacket.getLength());
