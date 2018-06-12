@@ -10,11 +10,10 @@ import karabaka.game.client.utils.Action;
 import karabaka.game.client.utils.Direction;
 
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import static karabaka.game.client.network.DatagramClientSender.PLAYER_IP;
+import static karabaka.game.client.network.DatagramClientHandler.PLAYER_IP;
 
 public class DatagramParser {
 

@@ -17,11 +17,11 @@ import java.net.SocketException;
 import java.util.HashSet;
 import java.util.Set;
 
-public class DatagramServerReceiver {
+public class DatagramServerHandler {
 
     private DatagramSocket socket;
 
-    public final static DatagramServerReceiver instance = new DatagramServerReceiver();
+    public final static DatagramServerHandler instance = new DatagramServerHandler();
 
     private final Set<InetAddress> players = new HashSet<>();
 
@@ -92,7 +92,7 @@ public class DatagramServerReceiver {
     }
 
 
-    private DatagramServerReceiver() {
+    private DatagramServerHandler() {
         try {
             socket = new DatagramSocket(NetworkSettings.SERVER_RECEIVER_PORT);
         } catch (SocketException e) {

@@ -10,11 +10,11 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 
-public class DatagramClientSender {
+public class DatagramClientHandler {
 
     private DatagramSocket socket;
 
-    public final static DatagramClientSender instance = new DatagramClientSender();
+    public final static DatagramClientHandler instance = new DatagramClientHandler();
 
     public boolean canJoin = false;
 
@@ -63,7 +63,7 @@ public class DatagramClientSender {
     }
 
 
-    private DatagramClientSender() {
+    private DatagramClientHandler() {
         try {
             socket = new DatagramSocket(NetworkSettings.CLIENT_RECEIVER_PORT);
         } catch (SocketException e) {
