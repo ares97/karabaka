@@ -8,7 +8,7 @@ import karabaka.game.server.KarabakaServer;
 
 public class DesktopLauncher {
 
-    private static final boolean RUN_AS_SERVER = true;
+    private static final boolean RUN_AS_SERVER = false;
 
     public static void main(String[] arg) {
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();

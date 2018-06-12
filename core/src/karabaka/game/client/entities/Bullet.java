@@ -25,13 +25,13 @@ public class Bullet extends Rectangle {
         return texture;
     }
 
-    public void update() {
+    public synchronized void update() {
         updatePosition();
         for (Tank tank : EntityContainer.instance.getTanks()) {
             if (tank.overlaps(this)) {
-                tank.x = -3000;
-                tank.y = -3000;
-                // todo give ability to reborn after clicking some key
+                tank.x = -50;
+                tank.y = -50;
+                EntityContainer.instance.getBullets().remove(this);
             }
         }
     }
