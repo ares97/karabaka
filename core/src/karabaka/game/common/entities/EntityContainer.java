@@ -1,5 +1,7 @@
 package karabaka.game.common.entities;
 
+import karabaka.game.client.entities.Player;
+
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 

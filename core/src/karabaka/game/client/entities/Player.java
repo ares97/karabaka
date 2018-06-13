@@ -1,9 +1,10 @@
-package karabaka.game.common.entities;
+package karabaka.game.client.entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import karabaka.game.client.handlers.ClientMoveHandlerImpl;
 import karabaka.game.client.handlers.ClientShootHandlerImpl;
+import karabaka.game.common.entities.Tank;
 import karabaka.game.common.handlers.MoveHandler;
 import karabaka.game.common.handlers.ShootHandler;
 import karabaka.game.common.utils.constants.Direction;

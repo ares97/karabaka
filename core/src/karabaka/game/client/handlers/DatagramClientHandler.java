@@ -1,7 +1,7 @@
 package karabaka.game.client.handlers;
 
 import karabaka.game.common.entities.EntityContainer;
-import karabaka.game.common.entities.Player;
+import karabaka.game.client.entities.Player;
 import karabaka.game.common.utils.DatagramParser;
 import karabaka.game.common.utils.constants.NetworkSettings;
 
