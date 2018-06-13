@@ -11,6 +11,7 @@ import karabaka.game.common.entities.Tank;
 import karabaka.game.common.utils.constants.GameSettings;
 import karabaka.game.common.utils.TextureManager;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -35,8 +36,8 @@ public class BaseGameRenderer extends ApplicationAdapter {
     }
 
     private void renderEntities() {
-        Set<Tank> tanks = EntityContainer.instance.getTanks();
-        ConcurrentLinkedQueue<Bullet> bullets = EntityContainer.instance.getBullets();
+        Set<Tank> tanks = new HashSet<>(EntityContainer.instance.getTanks());
+        ConcurrentLinkedQueue<Bullet> bullets = new ConcurrentLinkedQueue<>(EntityContainer.instance.getBullets());
 
         Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
