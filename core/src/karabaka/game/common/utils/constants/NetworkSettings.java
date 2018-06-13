@@ -2,7 +2,7 @@ package karabaka.game.common.utils.constants;
 
 public class NetworkSettings {
 
-    public final static String SERVER_IP = "192.168.43.57";
+    public final static String SERVER_IP = "127.0.0.1";
 
     public static final int SERVER_RECEIVER_PORT = 3000;
 

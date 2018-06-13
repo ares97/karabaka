@@ -11,6 +11,9 @@ import karabaka.game.common.entities.Tank;
 import karabaka.game.common.utils.constants.GameSettings;
 import karabaka.game.common.utils.TextureManager;
 
+import java.util.Set;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
 public class BaseGameRenderer extends ApplicationAdapter {
 
     private SpriteBatch batch;
@@ -25,9 +28,6 @@ public class BaseGameRenderer extends ApplicationAdapter {
 
     @Override
     public void render() {
-        Gdx.gl.glClearColor(1, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
         batch.begin();
         batch.draw(map, 0, 0, GameSettings.GAME_WIDHT, GameSettings.GAME_HEIGHT);
         renderEntities();
@@ -35,10 +35,16 @@ public class BaseGameRenderer extends ApplicationAdapter {
     }
 
     private void renderEntities() {
-        for (Tank tank : EntityContainer.instance.getTanks())
+        Set<Tank> tanks = EntityContainer.instance.getTanks();
+        ConcurrentLinkedQueue<Bullet> bullets = EntityContainer.instance.getBullets();
+
+        Gdx.gl.glClearColor(1, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        for (Tank tank : tanks)
             batch.draw(tank.getTexture(), tank.x, tank.y);
 
-        for (Bullet bullet : EntityContainer.instance.getBullets())
+        for (Bullet bullet : bullets)
             batch.draw(bullet.getTexture(), bullet.x, bullet.y);
     }
 

@@ -13,12 +13,13 @@ public class KarabakaServer extends BaseGameRenderer {
     public void create() {
         super.create();
         DatagramServerHandler.instance.startListening();
+        addTrashData();
     }
 
     @Override
     public void render() {
         DatagramServerHandler.instance.sendDataToPlayers().run();
-        //super.render();
+        super.render();
         updateEntities();
     }
 
