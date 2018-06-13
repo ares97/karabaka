@@ -8,6 +8,7 @@ public class TextureManager {
     public final Texture tankLeft;
     public final Texture tankRight;
 
+    public final Texture map;
     public final Texture bullet;
 
     public static TextureManager instance = new TextureManager();
@@ -17,6 +18,7 @@ public class TextureManager {
         tankDown = new Texture("core/assets/Tank_down.png");
         tankLeft = new Texture("core/assets/Tank_left.png");
         tankRight = new Texture("core/assets/Tank_right.png");
+        map = new Texture("core/assets/map.jpg");
 
         bullet = new Texture("core/assets/bullet.png");
     }

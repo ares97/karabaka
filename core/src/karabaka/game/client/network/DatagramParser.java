@@ -64,7 +64,13 @@ public class DatagramParser {
         if (entities.length >= 2) {
             String[] bulletPackage = entities[1].split(POSITION_SEPARATOR);
             decodeBulletPackage(bulletPackage);
+        }else {
+            setNoBulletOnMap();
         }
+    }
+
+    private void setNoBulletOnMap() {
+        EntityContainer.instance.setBullets(new ConcurrentLinkedQueue<>());
     }
 
     public synchronized String parseEntities() {
