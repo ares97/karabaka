@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import karabaka.game.common.entities.EntityContainer;
 import karabaka.game.common.entities.Tank;
 import karabaka.game.common.handlers.MoveHandler;
+import karabaka.game.common.handlers.RespawnHandler;
 import karabaka.game.common.handlers.ShootHandler;
 import karabaka.game.common.utils.DatagramParser;
 import karabaka.game.common.utils.constants.Direction;
@@ -27,6 +28,7 @@ public class DatagramServerHandler {
 
     private MoveHandler moveHandler = new ServerMoveHandlerImpl();
     private ShootHandler shootHandler = new ServerShootHandlerImpl();
+    private RespawnHandler respawnHandler = new ServerRespawnHandlerImpl();
 
     public void startListening() {
         new Thread(datagramActionReceiver()).start();
@@ -53,7 +55,7 @@ public class DatagramServerHandler {
                         handleJoiningToServer(dPacket.getAddress());
                     } else {
                         Gdx.app.postRunnable(DatagramParser.instance
-                                .decodeAction(receivedDatagram, moveHandler, shootHandler));
+                                .decodeAction(receivedDatagram, moveHandler, shootHandler, respawnHandler));
                     }
 
                 } catch (IOException e) {

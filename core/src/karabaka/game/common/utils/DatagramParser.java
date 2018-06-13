@@ -5,6 +5,7 @@ import karabaka.game.common.entities.EntityContainer;
 import karabaka.game.common.entities.Bullet;
 import karabaka.game.common.entities.Tank;
 import karabaka.game.common.handlers.MoveHandler;
+import karabaka.game.common.handlers.RespawnHandler;
 import karabaka.game.common.handlers.ShootHandler;
 import karabaka.game.common.utils.constants.Action;
 import karabaka.game.common.utils.constants.Direction;
@@ -34,7 +35,12 @@ public class DatagramParser {
         return result;
     }
 
-    public Runnable decodeAction(String datagram, MoveHandler moveHandler, ShootHandler shootHandler) {
+    public Runnable decodeAction(
+            String datagram,
+            MoveHandler moveHandler,
+            ShootHandler shootHandler,
+            RespawnHandler respawnHandler
+    ) {
         String[] message = datagram.split("&");
         if (message.length == 3) {
             Action action = Action.valueOf(message[0]);
@@ -48,6 +54,8 @@ public class DatagramParser {
                         return () -> moveHandler.move(direction, tank.get());
                     case SHOOT:
                         return () -> shootHandler.shoot(direction, tank.get());
+                    case RESPAWN:
+                        return () -> respawnHandler.respawn(tank.get());
                 }
             }
         }
@@ -64,7 +72,7 @@ public class DatagramParser {
         if (entities.length >= 2) {
             String[] bulletPackage = entities[1].split(POSITION_SEPARATOR);
             decodeBulletPackage(bulletPackage);
-        }else {
+        } else {
             setNoBulletOnMap();
         }
     }
