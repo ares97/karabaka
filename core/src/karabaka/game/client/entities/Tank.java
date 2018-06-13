@@ -44,6 +44,10 @@ public class Tank extends Rectangle {
         this.direction = direction;
     }
 
+    public void updateTexture(){
+        texture = TextureManager.instance.getTank(direction);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

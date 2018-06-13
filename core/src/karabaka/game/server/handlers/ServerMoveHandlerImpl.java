@@ -25,6 +25,7 @@ public class ServerMoveHandlerImpl implements MoveHandler {
                 }
             }
             player.setDirection(direction);
+            player.updateTexture();
         }
     }
 
