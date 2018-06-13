@@ -85,7 +85,6 @@ public class DatagramParser {
             datagram += String.valueOf(bullet.x) + POSITION_SEPARATOR + String.valueOf(bullet.y) + POSITION_SEPARATOR
                     + String.valueOf(bullet.getDirection()) + POSITION_SEPARATOR;
         }
-        System.out.println(datagram);
         return datagram;
     }
 
