@@ -13,9 +13,9 @@ public class ServerRespawnHandlerImpl implements RespawnHandler {
         int x = (int) tank.x;
         int y = (int) tank.y;
 
-        if (x < -100 || x > GameSettings.GAME_WIDHT + 100 || y < -100 || y > GameSettings.GAME_HEIGHT + 100) {
-            tank.x = new Random().nextInt(GameSettings.GAME_WIDHT);
-            tank.y = new Random().nextInt(GameSettings.GAME_HEIGHT);
+        if (x <= 0 || x >= GameSettings.GAME_WIDHT || y <= 0 || y >= GameSettings.GAME_HEIGHT ) {
+            tank.x = new Random().nextInt((int) (GameSettings.GAME_WIDHT*0.7));
+            tank.y = new Random().nextInt((int) (GameSettings.GAME_HEIGHT*0.7));
             tank.updateTexture();
         }
     }

@@ -28,8 +28,8 @@ public class Bullet extends Rectangle {
         updatePosition();
         for (Tank tank : EntityContainer.instance.getTanks()) {
             if (tank.overlaps(this)) {
-                tank.x = -50;
-                tank.y = -50;
+                tank.x = -250;
+                tank.y = -250;
                 EntityContainer.instance.getBullets().remove(this);
             }
         }

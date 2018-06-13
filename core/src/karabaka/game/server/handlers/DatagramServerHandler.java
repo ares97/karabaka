@@ -17,6 +17,8 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class DatagramServerHandler {
 
@@ -31,7 +33,8 @@ public class DatagramServerHandler {
     private RespawnHandler respawnHandler = new ServerRespawnHandlerImpl();
 
     public void startListening() {
-        new Thread(datagramActionReceiver()).start();
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        executorService.execute(datagramActionReceiver());
     }
 
     public Runnable sendDataToPlayers() {
@@ -46,8 +49,8 @@ public class DatagramServerHandler {
     private Runnable datagramActionReceiver() {
         return () -> {
             while (true) {
-                byte[] buff = new byte[1024];
-                DatagramPacket dPacket = new DatagramPacket(buff, 1024);
+                byte[] buff = new byte[2048];
+                DatagramPacket dPacket = new DatagramPacket(buff, 2048);
                 try {
                     socket.receive(dPacket);
                     String receivedDatagram = new String(dPacket.getData(), 0, dPacket.getLength());

@@ -35,7 +35,7 @@ public class DatagramParser {
         return result;
     }
 
-    public Runnable decodeAction(
+    public synchronized Runnable decodeAction(
             String datagram,
             MoveHandler moveHandler,
             ShootHandler shootHandler,
