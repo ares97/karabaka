@@ -1,4 +1,4 @@
-package karabaka.game.client.utils;
+package karabaka.game.common.utils.constants;
 
 public enum Direction {
     LEFT(1),

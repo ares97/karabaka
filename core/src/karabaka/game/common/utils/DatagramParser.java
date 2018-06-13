@@ -1,19 +1,19 @@
-package karabaka.game.client.network;
+package karabaka.game.common.utils;
 
 import com.badlogic.gdx.Gdx;
-import karabaka.game.client.EntityContainer;
-import karabaka.game.client.entities.Bullet;
-import karabaka.game.client.entities.Tank;
-import karabaka.game.client.handlers.MoveHandler;
-import karabaka.game.client.handlers.ShootHandler;
-import karabaka.game.client.utils.Action;
-import karabaka.game.client.utils.Direction;
+import karabaka.game.common.entities.EntityContainer;
+import karabaka.game.common.entities.Bullet;
+import karabaka.game.common.entities.Tank;
+import karabaka.game.common.handlers.MoveHandler;
+import karabaka.game.common.handlers.ShootHandler;
+import karabaka.game.common.utils.constants.Action;
+import karabaka.game.common.utils.constants.Direction;
 
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import static karabaka.game.client.network.DatagramClientHandler.PLAYER_IP;
+import static karabaka.game.client.handlers.DatagramClientHandler.PLAYER_IP;
 
 public class DatagramParser {
 

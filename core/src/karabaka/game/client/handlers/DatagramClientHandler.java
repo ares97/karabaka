@@ -1,8 +1,9 @@
-package karabaka.game.client.network;
+package karabaka.game.client.handlers;
 
-import karabaka.game.client.EntityContainer;
-import karabaka.game.client.entities.Player;
-import karabaka.game.client.utils.NetworkSettings;
+import karabaka.game.common.entities.EntityContainer;
+import karabaka.game.common.entities.Player;
+import karabaka.game.common.utils.DatagramParser;
+import karabaka.game.common.utils.constants.NetworkSettings;
 
 import java.io.IOException;
 import java.net.DatagramPacket;

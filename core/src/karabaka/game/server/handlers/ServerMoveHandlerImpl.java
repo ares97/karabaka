@@ -1,10 +1,10 @@
 package karabaka.game.server.handlers;
 
-import karabaka.game.client.EntityContainer;
-import karabaka.game.client.entities.Tank;
-import karabaka.game.client.handlers.MoveHandler;
-import karabaka.game.client.utils.Direction;
-import karabaka.game.client.utils.GameSettings;
+import karabaka.game.common.entities.EntityContainer;
+import karabaka.game.common.entities.Tank;
+import karabaka.game.common.handlers.MoveHandler;
+import karabaka.game.common.utils.constants.Direction;
+import karabaka.game.common.utils.constants.GameSettings;
 
 public class ServerMoveHandlerImpl implements MoveHandler {
 

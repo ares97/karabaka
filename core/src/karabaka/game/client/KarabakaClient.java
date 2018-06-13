@@ -1,8 +1,9 @@
 package karabaka.game.client;
 
-import karabaka.game.BaseGameRenderer;
-import karabaka.game.client.network.DatagramClientHandler;
-import karabaka.game.client.utils.NetworkSettings;
+import karabaka.game.common.BaseGameRenderer;
+import karabaka.game.client.handlers.DatagramClientHandler;
+import karabaka.game.common.utils.constants.NetworkSettings;
+import karabaka.game.common.entities.EntityContainer;
 
 public class KarabakaClient extends BaseGameRenderer {
 

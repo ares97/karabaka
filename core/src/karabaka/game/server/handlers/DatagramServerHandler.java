@@ -1,13 +1,13 @@
 package karabaka.game.server.handlers;
 
 import com.badlogic.gdx.Gdx;
-import karabaka.game.client.EntityContainer;
-import karabaka.game.client.entities.Tank;
-import karabaka.game.client.handlers.MoveHandler;
-import karabaka.game.client.handlers.ShootHandler;
-import karabaka.game.client.network.DatagramParser;
-import karabaka.game.client.utils.Direction;
-import karabaka.game.client.utils.NetworkSettings;
+import karabaka.game.common.entities.EntityContainer;
+import karabaka.game.common.entities.Tank;
+import karabaka.game.common.handlers.MoveHandler;
+import karabaka.game.common.handlers.ShootHandler;
+import karabaka.game.common.utils.DatagramParser;
+import karabaka.game.common.utils.constants.Direction;
+import karabaka.game.common.utils.constants.NetworkSettings;
 
 import java.io.IOException;
 import java.net.DatagramPacket;

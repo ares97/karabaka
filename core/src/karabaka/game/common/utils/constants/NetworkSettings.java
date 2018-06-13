@@ -1,4 +1,4 @@
-package karabaka.game.client.utils;
+package karabaka.game.common.utils.constants;
 
 public class NetworkSettings {
 

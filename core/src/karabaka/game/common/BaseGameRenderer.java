@@ -1,16 +1,15 @@
-package karabaka.game;
+package karabaka.game.common;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g3d.Renderable;
-import karabaka.game.client.EntityContainer;
-import karabaka.game.client.entities.Bullet;
-import karabaka.game.client.entities.Tank;
-import karabaka.game.client.utils.GameSettings;
-import karabaka.game.client.utils.TextureManager;
+import karabaka.game.common.entities.Bullet;
+import karabaka.game.common.entities.EntityContainer;
+import karabaka.game.common.entities.Tank;
+import karabaka.game.common.utils.constants.GameSettings;
+import karabaka.game.common.utils.TextureManager;
 
 public class BaseGameRenderer extends ApplicationAdapter {
 

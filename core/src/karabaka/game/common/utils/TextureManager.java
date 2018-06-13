@@ -1,6 +1,7 @@
-package karabaka.game.client.utils;
+package karabaka.game.common.utils;
 
 import com.badlogic.gdx.graphics.Texture;
+import karabaka.game.common.utils.constants.Direction;
 
 public class TextureManager {
     public final Texture tankUp;

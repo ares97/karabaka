@@ -1,10 +1,10 @@
-package karabaka.game.client.entities;
+package karabaka.game.common.entities;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
-import karabaka.game.client.utils.Direction;
-import karabaka.game.client.utils.GameSettings;
-import karabaka.game.client.utils.TextureManager;
+import karabaka.game.common.utils.constants.Direction;
+import karabaka.game.common.utils.constants.GameSettings;
+import karabaka.game.common.utils.TextureManager;
 
 import java.util.Objects;
 

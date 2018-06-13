@@ -1,11 +1,11 @@
 package karabaka.game.client.handlers;
 
-import karabaka.game.client.entities.Tank;
-import karabaka.game.client.network.DatagramClientHandler;
-import karabaka.game.client.network.DatagramParser;
-import karabaka.game.client.utils.Action;
-import karabaka.game.client.utils.Direction;
-import karabaka.game.client.utils.GameSettings;
+import karabaka.game.common.entities.Tank;
+import karabaka.game.common.utils.DatagramParser;
+import karabaka.game.common.handlers.ShootHandler;
+import karabaka.game.common.utils.constants.Action;
+import karabaka.game.common.utils.constants.Direction;
+import karabaka.game.common.utils.constants.GameSettings;
 
 import java.util.Timer;
 import java.util.TimerTask;

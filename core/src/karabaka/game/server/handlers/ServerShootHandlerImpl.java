@@ -1,11 +1,11 @@
 package karabaka.game.server.handlers;
 
-import karabaka.game.client.EntityContainer;
-import karabaka.game.client.entities.Bullet;
-import karabaka.game.client.entities.Tank;
-import karabaka.game.client.handlers.ShootHandler;
-import karabaka.game.client.utils.Direction;
-import karabaka.game.client.utils.GameSettings;
+import karabaka.game.common.entities.EntityContainer;
+import karabaka.game.common.entities.Bullet;
+import karabaka.game.common.entities.Tank;
+import karabaka.game.common.handlers.ShootHandler;
+import karabaka.game.common.utils.constants.Direction;
+import karabaka.game.common.utils.constants.GameSettings;
 
 public class ServerShootHandlerImpl implements ShootHandler {
     @Override

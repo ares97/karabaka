@@ -3,12 +3,12 @@ package karabaka.game.desktop;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import karabaka.game.client.KarabakaClient;
-import karabaka.game.client.utils.GameSettings;
+import karabaka.game.common.utils.constants.GameSettings;
 import karabaka.game.server.KarabakaServer;
 
 public class DesktopLauncher {
 
-    private static final boolean RUN_AS_SERVER = true;
+    private static final boolean RUN_AS_SERVER = false;
 
     public static void main(String[] arg) {
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();

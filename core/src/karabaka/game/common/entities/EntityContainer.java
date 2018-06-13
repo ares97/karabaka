@@ -1,8 +1,4 @@
-package karabaka.game.client;
-
-import karabaka.game.client.entities.Bullet;
-import karabaka.game.client.entities.Player;
-import karabaka.game.client.entities.Tank;
+package karabaka.game.common.entities;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
