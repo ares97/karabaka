@@ -17,6 +17,7 @@ public class ServerMoveHandlerImpl implements MoveHandler {
             float lastY = player.y;
 
             updatePosition(direction, player);
+            player.setDirection(direction);
 
             for (Tank tank : EntityContainer.instance.getTanks()) {
                 if (tank != player && tank.overlaps(player)) {
@@ -24,8 +25,6 @@ public class ServerMoveHandlerImpl implements MoveHandler {
                     player.y = lastY;
                 }
             }
-            player.setDirection(direction);
-            player.updateTexture();
         }
     }
 

@@ -42,6 +42,7 @@ public class Tank extends Rectangle {
 
     public void setDirection(Direction direction) {
         this.direction = direction;
+        updateTexture();
     }
 
     public void updateTexture(){
